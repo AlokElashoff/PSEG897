@@ -31,3 +31,4 @@ def create_image(planets, filename=None):
 
     if filename:
         plt.savefig(filename)
+    plt.close()

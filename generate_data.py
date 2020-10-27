@@ -1,6 +1,7 @@
 import os
 import sys
 import datetime
+import tqdm
 import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,7 +59,7 @@ if __name__ == '__main__':
     processed_data = []
 
     ### Run Through Times ###
-    for _ in range(args.timesteps):
+    for _ in tqdm.tqdm(range(args.timesteps), desc="Generating..."):
 
         ### Create Dictionary for Time time ###
         current_dict = {
@@ -90,7 +91,7 @@ if __name__ == '__main__':
 
         ## Generate Images and Save Location ###
         if args.image:
-            filename = os.path.join(args.image_folder, current_dict['time'] + ".png")
+            filename = os.path.join(args.image_folder, current_dict['time'][:10] + ".png")
             current_dict['image'] = filename
             create_image(current_dict['planet_data'], filename=filename)
 
