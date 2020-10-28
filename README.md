@@ -8,13 +8,14 @@ Our project provides a tool to use get positional information about the eight pl
 We provide the option to further get data that would be representitive of that of ancient civilizations by providing an option to add the tools used during measurement, adding relevant error to the fields that would have been introduced by those tools.
 
 Lastly, with a image flag, we allow the creating of a night sky image to be generated form the specific (possibly tool generated) data providing a realistic depiction of what the data at the time with specific tools could look like in the form of planets in the night sky. We furthermore provide another class to create a video from the generated images, creating a depiction of the night over the given timespan in the form of planetal positions. 
-## Requirenments 
+## Requirements 
 
-We provide a requirenments.txt. Run: 
+We provide a requirements.txt. Run: 
 ```
-pip install -r requirenments.txt 
+pip install -r requirements.txt
+
 ```
-to make sure you have all necessary requirenments to run the project.
+to make sure you have all necessary requirements to run the project.
 
 
 ## Generating Data
@@ -72,4 +73,9 @@ When generating the dataset with custom parameters there are a series of flags t
 --image               Generate images for each data point.
 --image_folder IMAGE_FOLDER
                       The folder to which images are stored
+```
+
+Additionally, to create a movie from the images, use the command:
+```
+python3 generate_image image_file.py
 ```
