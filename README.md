@@ -3,6 +3,19 @@ Anjali Kantharuban, Alok Elashoff, Rushil Kapadia, Nikhil Mandava, and Jinyoung 
 
 ## Description
 
+Our project provides a tool to use get positional information about the eight planets in our solar system given a specific time range in YYY-MM-DD form and position in latitude and longtitude. We return the azimuth, altitude measurements as well as the right ascention and declination for an alternate measurement. The distance of the planet is also provided. 
+
+We provide the option to further get data that would be representitive of that of ancient civilizations by providing an option to add the tools used during measurement, adding relevant error to the fields that would have been introduced by those tools.
+
+Lastly, with a image flag, we allow the creating of a night sky image to be generated form the specific (possibly tool generated) data providing a realistic depiction of what the data at the time with specific tools could look like in the form of planets in the night sky. We furthermore provide another class to create a video from the generated images, creating a depiction of the night over the given timespan in the form of planetal positions. 
+## Requirenments 
+
+We provide a requirenments.txt. Run: 
+```
+pip install -r requirenments.txt 
+```
+to make sure you have all necessary requirenments to run the project.
+
 
 ## Generating Data
 
