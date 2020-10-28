@@ -1,0 +1,21 @@
+{
+    "crossstaff": {
+        "alt": 2.0,
+        "az": 2.0
+    },
+
+    "sextant": {
+        "alt": 0.009,
+        "az": 0.009
+    },
+
+    "quadrant": {
+        "alt": 0.013,
+        "az": 0.013
+    },
+
+    "gnomon": {
+        "az":
+    }
+
+}
