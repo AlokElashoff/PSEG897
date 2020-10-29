@@ -15,8 +15,8 @@ if __name__ == '__main__':
     ### Argument Parser ###
     parser = ArgumentParser()
 
-    parser.add_argument('--T', help='The time from which you want to generate data in the format YYYY-MM-DD', default="2000-01-01")
-    parser.add_argument('--dt', help='The timestep between data points in days.', default=30, type=int)
+    parser.add_argument('--T', help='The time from which you want to generate data in the format YYYY-MM-DD_HH:MM', default="2000-01-01_00:00")
+    parser.add_argument('--dt', help='The timestep between data points in days.', default=30, type=float)
     parser.add_argument('--timesteps', help='The number of data points to generate.', default=100, type=int)
 
     parser.add_argument('--planets', help='Which planets out of (mercury, venus, mars, jupiter, saturn, neptune, uranus) to include in the dataset.', nargs='+', default=None)
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     ts = load.timescale()
 
     ### Set Up Time Data ###
-    t = datetime.datetime.strptime(args.T, "%Y-%m-%d")
+    t = datetime.datetime.strptime(args.T, "%Y-%m-%d_%H:%M")
     t_delta = datetime.timedelta(days=args.dt)
 
     ### Define Error For Each Measurement Based Off Of Inputted Tools ###
@@ -99,14 +99,14 @@ if __name__ == '__main__':
 
         ### Create Dictionary for Time time ###
         current_dict = {
-            'time': str(t),
+            'time': str(t)[:16],
             'planet_data': {},
         }
 
         ### Iterate Through Planets for This Time ###
         for p in planets:
             ### Get Data For This Time ###
-            astrometric = position.at(ts.utc(t.year, t.month, t.day)).observe(raw_data[p + ' barycenter'])
+            astrometric = position.at(ts.utc(t.year, t.month, t.day, t.hour, t.minute)).observe(raw_data[p + ' barycenter'])
             alt, az, _ = astrometric.apparent().altaz()
             ra, dec, dist = astrometric.apparent().radec(epoch = "date")
 
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
         ## Generate Images and Save Location ###
         if args.image:
-            filename = os.path.join(args.image_folder, current_dict['time'][:10] + ".png")
+            filename = os.path.join(args.image_folder, current_dict['time'][:10] + "_" + current_dict['time'][11:13] + "-" + current_dict['time'][14:] + ".png")
             current_dict['image'] = filename
             create_image(current_dict['planet_data'], filename=filename)
 

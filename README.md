@@ -3,11 +3,11 @@ Anjali Kantharuban, Rushil Kapadia, Nikhil Mandava, Alok Elashoff, and Jinyoung 
 
 ## Description
 
-Our project provides a tool to use get positional information about the eight planets in our solar system given a specific time range in YYY-MM-DD form and position in latitude and longtitude. We return the azimuth, altitude measurements as well as the right ascention and declination for an alternate measurement. The distance of the planet is also provided.
+This dataset can be used to generate positional information about the eight planets in the solar system given a time period and a location on earth. The positions are returned as would be measured by an observer at that place on earth - specifically, we provide the azimuth and altitude as welll as right ascension and declination (as an alternate measurement system). We also provide the distance of the planet, although this is not technically something an ancient astronomer would have been able to measure directly.
 
-We provide the option to further get data that would be representitive of that of ancient civilizations by providing an option to add the tools used during measurement, adding relevant error to the fields that would have been introduced by those tools.
+Beyond just offering data based off of a location on earth, we include a system of using premade or custom tools to appropriately distort the data to mimic the accuracy to which ancient astronomers would have been able to record planetry position. In `tools.json` you will find three provided tools.
 
-Lastly, with a image flag, we allow the creating of a night sky image to be generated form the specific (possibly tool generated) data providing a realistic depiction of what the data at the time with specific tools could look like in the form of planets in the night sky. We furthermore provide another class to create a video from the generated images, creating a depiction of the night over the given timespan in the form of planetal positions.
+Lastly, we provide the ability to generate images from the fuzzied measurements in the case that you would like to learn from image data. These images are helpful in that they remove the noise added by stars and other celestial objects while keeping the noise on the planets. This means they should be easier to learn off of than true raw images of the sky. For testing purposes, we offer a method of creating a clip that plays the generated images in order.
 ## Requirements
 
 We provide a requirements.txt. You can ensure you have all the necessary requirements to run the project by running:
@@ -44,7 +44,7 @@ When generating the dataset with custom parameters there are a series of flags t
 ```
 -h, --help            show this help message and exit
 --T T                 The time from which you want to generate data in the
-                        format YYYY-MM-DD
+                        format YYYY-MM-DD_HH:MM
 --dt DT               The timestep between data points in days.
 --timesteps TIMESTEPS
                       The number of data points to generate.
@@ -79,9 +79,9 @@ When generating the dataset with custom parameters there are a series of flags t
                       The folder to which images are stored
 ```
 
-Additionally, to create a movie from the images, use the command (replace filename with filename and 3 with the desired FPS):
+Additionally, to create a movie from the images, use the command:
 ```
-python3 make_movie.py --F filename --FPS 3
+python3 generate_image image_file.py
 ```
 
 ## Examples
@@ -94,7 +94,7 @@ python3 generate_data.py --tools sextant --planets mercury venus --long 37.9838 
 
 If you want to generate image data every day for 10,000 days starting in the year 0 and store it in a folder named "CS 189":
 ```
-python3 generate_data.py --T 0000-01-01 --dt 1 --timesteps 100000 --image --image_folder "CS 189"
+python3 generate_data.py --T 0000-01-01_00:00 --dt 1.0 --timesteps 100000 --image --image_folder "CS 189"
 ```
 
 If you don't feel like creating a custom tool but you want to add a max of 0.1 degrees of error to each instrument:

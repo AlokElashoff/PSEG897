@@ -11,8 +11,16 @@ def create_image(planets, filename=None):
     azimuths = [planets[planet]['az'] for planet in planets]
     theta = [90 - planets[planet]['az'] for planet in planets]
     r = [90 - planets[planet]['alt'] for planet in planets]
-    colors =["white", "purple", "red", "orange", "magenta", "green", "blue"]
-    colors = colors[:len(azimuths)]
+    colors = {
+        "mercury": "white",
+        "venus": "yellow",
+        "mars": "red",
+        "jupiter": "orange",
+        "saturn": "magenta",
+        "neptune": "green",
+        "uranus": "blue"
+        }
+    colors = [colors[planet] for planet in planets]
 
     for i, azimuth in enumerate(reversed(azimuths)):
         if(azimuth < 0):
