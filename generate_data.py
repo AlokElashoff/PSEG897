@@ -24,8 +24,8 @@ if __name__ == '__main__':
     parser.add_argument('--long', help='The longitude of the location on earth the data is observed from in degrees.', default=20.5937, type=float)
     parser.add_argument('--lat', help='The longitude of the location on earth the data is observed from in degrees.', default=78.9629, type=float)
 
-    parser.add_argument('--tools', help='The list of tools used to calculate error. You can add more tools in tools.json.', default=[], nargs='+')
-    parser.add_argument('--tools_file', help='The json files that contain data about each tool,', default="tools.json")
+    parser.add_argument('--tools', help='The list of tools used to calculate error. You can add more tools in tools.json.', default=["crossstaff"], nargs='+')
+    parser.add_argument('--tools_file', help='The json files that contain data about each tool.', default="tools.json")
     parser.add_argument('--alt_error', help='The maximum error in the measurement of altitude in degrees.', default=0.0, type=float)
     parser.add_argument('--az_error', help='The maximum error in the measurement of azmith in degrees.', default=0.0, type=float)
     parser.add_argument('--ra_error', help='The maximum error in the measurement of right ascension in hours.', default=0.0, type=float)
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     possible_planets = ['mercury', 'mars', 'venus', 'jupiter', 'saturn', 'neptune', 'uranus']
     longitude = str(args.long) + ' N'
     latitude = str(args.lat) + ' E'
-    position = earth + Topos('20.5937 N', '78.9629 E')
+    position = earth + Topos(longitude, latitude)
     planets = ['mercury', 'mars', 'venus', 'jupiter', 'saturn'] if not args.planets else [planet.lower() for planet in args.planets]
     for planet in planets:
         if planet not in possible_planets:

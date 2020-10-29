@@ -1,21 +1,19 @@
 # Planetary Dataset
-Anjali Kantharuban, Alok Elashoff, Rushil Kapadia, Nikhil Mandava, and Jinyoung Bae
+Anjali Kantharuban, Rushil Kapadia, Nikhil Mandava, Alok Elashoff, and Jinyoung Bae
 
 ## Description
 
-Our project provides a tool to use get positional information about the eight planets in our solar system given a specific time range in YYY-MM-DD form and position in latitude and longtitude. We return the azimuth, altitude measurements as well as the right ascention and declination for an alternate measurement. The distance of the planet is also provided. 
+Our project provides a tool to use get positional information about the eight planets in our solar system given a specific time range in YYY-MM-DD form and position in latitude and longtitude. We return the azimuth, altitude measurements as well as the right ascention and declination for an alternate measurement. The distance of the planet is also provided.
 
 We provide the option to further get data that would be representitive of that of ancient civilizations by providing an option to add the tools used during measurement, adding relevant error to the fields that would have been introduced by those tools.
 
-Lastly, with a image flag, we allow the creating of a night sky image to be generated form the specific (possibly tool generated) data providing a realistic depiction of what the data at the time with specific tools could look like in the form of planets in the night sky. We furthermore provide another class to create a video from the generated images, creating a depiction of the night over the given timespan in the form of planetal positions. 
-## Requirements 
+Lastly, with a image flag, we allow the creating of a night sky image to be generated form the specific (possibly tool generated) data providing a realistic depiction of what the data at the time with specific tools could look like in the form of planets in the night sky. We furthermore provide another class to create a video from the generated images, creating a depiction of the night over the given timespan in the form of planetal positions.
+## Requirements
 
-We provide a requirements.txt. Run: 
+We provide a requirements.txt. You can ensure you have all the necessary requirements to run the project by running:
 ```
 pip install -r requirements.txt
-
 ```
-to make sure you have all necessary requirements to run the project.
 
 
 ## Generating Data
@@ -40,6 +38,8 @@ This dataset contains a list of planetary data in the following format:
 
 There are seven available planets - Mercury, Venus, Mars, Jupiter, Saturn, Neptune, and Uranus. When generating this dataset with default arguments, only the first five are included because before the advent of modern instruments, Neptune and Uranus when not visible.
 
+Images are not provided in the pre-generated dataset, but you can generate images of the night sky that represent how the planets would look when looking up at the sky from a particular location.
+
 When generating the dataset with custom parameters there are a series of flags that can be used:
 ```
 -h, --help            show this help message and exit
@@ -55,6 +55,10 @@ When generating the dataset with custom parameters there are a series of flags t
                       observed from in degrees.
 --lat LAT             The longitude of the location on earth the data is
                       observed from in degrees.
+--tools TOOLS [TOOLS ...]
+                      The list of tools used to calculate error. You can add
+--tools_file TOOLS_FILE
+                      The json files that contain data about each tool.
 --alt_error ALT_ERROR
                       The maximum error in the measurement of altitude in
                       degrees.
@@ -78,4 +82,22 @@ When generating the dataset with custom parameters there are a series of flags t
 Additionally, to create a movie from the images, use the command:
 ```
 python3 generate_image image_file.py
+```
+
+## Examples
+Here's some examples on how to generate various variations on our dataset.
+
+If you want to generate data for just the planets closer to the Sun than earth with a sextant in Greece:
+```
+python3 generate_data.py --tools sextant --planets mercury venus --long 37.9838 --lat 23.7275
+```
+
+If you want to generate image data every day for 10,000 days starting in the year 0 and store it in a folder named "CS 189":
+```
+python3 generate_data.py --T 0000-01-01 --dt 1 --timesteps 100000 --image --image_folder "CS 189"
+```
+
+If you don't feel like creating a custom tool but you want to add a max of 0.1 degrees of error to each instrument:
+```
+python3 generate_data.py --alt_error 0.1 --az_error 0.1 --ra_error 0.1 --dec_error 0.1 --dist_error 0.1
 ```
