@@ -79,9 +79,9 @@ When generating the dataset with custom parameters there are a series of flags t
                       The folder to which images are stored
 ```
 
-Additionally, to create a movie from the images, use the command:
+Additionally, to create a movie from the images, use the command (replace filename with filename and 3 with the desired FPS):
 ```
-python3 generate_image image_file.py
+python3 make_movie.py --F filename --FPS 3
 ```
 
 ## Examples
