@@ -108,4 +108,7 @@ In order to generate a movie from a file of images, use this command with file_n
 python3 make_movie.py --F file_name --FPS 3 --NUM 8000
 ```
 
+Enjoy!
+![](4k8zi1.gif)
+
 
