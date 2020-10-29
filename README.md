@@ -101,3 +101,11 @@ If you don't feel like creating a custom tool but you want to add a max of 0.1 d
 ```
 python3 generate_data.py --alt_error 0.1 --az_error 0.1 --ra_error 0.1 --dec_error 0.1 --dist_error 0.1
 ```
+
+## Generating movies
+In order to generate a movie from a file of images, use this command with file_name as the name of the file, replacing 3 with the frames per second, and replacing 8000 with the number of frames to be used for the movie (it chooses the first 8000 in this case). Do not use the third tag if you want to convert all the images:
+```
+python3 make_movie.py --F file_name --FPS 3 --NUM 8000
+```
+
+
