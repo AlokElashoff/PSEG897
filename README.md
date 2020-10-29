@@ -79,11 +79,6 @@ When generating the dataset with custom parameters there are a series of flags t
                       The folder to which images are stored
 ```
 
-Additionally, to create a movie from the images, use the command:
-```
-python3 generate_image image_file.py
-```
-
 ## Examples
 Here's some examples on how to generate various variations on our dataset.
 
