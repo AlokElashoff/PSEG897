@@ -21,8 +21,8 @@ pip install -r requirements.txt
 This dataset contains a list of planetary data in the following format:
 ```
 {
-  'time': "YYYY-MM-DD",
-  'image': "image_folder/YYYY-MM-DD.png",
+  'time': "YYYY-MM-DD HH:MM",
+  'image': "image_folder/YYYY-MM-DD_HH:MM.png",
   'planet_data': {
     'mercury': {
       'az': azimuth,
