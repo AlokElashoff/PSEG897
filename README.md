@@ -22,7 +22,7 @@ This dataset contains a list of planetary data in the following format:
 ```
 {
   'time': "YYYY-MM-DD HH:MM",
-  'image': "image_folder/YYYY-MM-DD_HH:MM.png",
+  'image': "image_folder/YYYY-MM-DD_HH-MM.png",
   'planet_data': {
     'mercury': {
       'az': azimuth,
