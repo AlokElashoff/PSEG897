@@ -40,7 +40,7 @@ There are seven available planets - Mercury, Venus, Mars, Jupiter, Saturn, Neptu
 
 Images are not provided in the pre-generated dataset, but you can generate images of the night sky that represent how the planets would look when looking up at the sky from a particular location.
 
-When generating the dataset with custom parameters there are a series of flags that can be used:
+The first time you generate data, your computer will have to download a raw data file that takes about 20 minutes. After that, generating data should take about 5 minutes for every 1,000 data points generated with images. The measurements file will be about 7 MB per 1,000 measurements and each image file is 14 KB. When generating the dataset with custom parameters there are a series of flags that can be used:
 ```
 -h, --help            show this help message and exit
 --T T                 The time from which you want to generate data in the
@@ -77,6 +77,24 @@ When generating the dataset with custom parameters there are a series of flags t
 --image               Generate images for each data point.
 --image_folder IMAGE_FOLDER
                       The folder to which images are stored
+```
+
+### Tools
+
+There are three tools provided with predefined maximum viewing error:
+1. Cross Staff (400 BCE - 1500 CE): The cross staff was a navigational tool used for centuries to measure the angle and altitude of a celestial body above the horizon. We define a Maximum Viewing Error of 0.5 degrees for the altitude and 0.5 degrees for the azimuth based on historical findings.
+2. Quadrant (150 CE-1620 CE): The quadrant was originally a derivative of the astrolabe used to measure the angles of the sun and later modified to measure the altitude and azimuth for any celestial body. The Maximum Viewing Error is 0.013 degrees for altitude and 0.013 degrees for azimuth as reported in the 1500s, although the error itself varied over the many modifications of the tool.
+3. Sextant (1730 CE - present): The sextant was similar to the cross staff but more advanced, with a Maximum Viewing Error of 0.009 degrees for altitude and 0.009 degrees for azimuth.
+
+You can also add your own tool by adding another entry to `tools.json` in the following format:
+```
+"tool_name": {
+        "alt": altitude,
+        "az": azimuth,
+        "ra": right ascension,
+        "dec": declination,
+        "dist": distance
+    },
 ```
 
 ## Examples
